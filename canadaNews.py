@@ -44,6 +44,6 @@ for item in rss_items:
   
   if response.message.content == '1':
     print(f"Title: {item['title']}")
-    #print(f"Link: {item['link']}")
-    print(f"Description: {item['description']}")
+    print(f"Link: {item['link']}")
+    #print(f"Description: {item['description']}")
     print("-" * 80)
