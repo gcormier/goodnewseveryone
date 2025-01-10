@@ -51,7 +51,13 @@ BODY_HTML = f"""
 
 <br><br>
 <hr>
-<span style="font-size: smaller; color: #808080;">Gov Prompt:<br>{govPrompt}<br><br>Can Prompt: {canPrompt}<br><br></span>'
+<span style="font-size: smaller; color: #808080;">
+Gov Prompt:<br>
+{govPrompt}<br><br>
+
+Can Prompt:<br>
+{canPrompt}<br><br>
+</span>'
 """
 send_email(destEmail, BODY_HTML, ses_user, ses_key)
 

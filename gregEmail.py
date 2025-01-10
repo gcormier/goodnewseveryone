@@ -1,6 +1,17 @@
 import boto3
 from botocore.exceptions import ClientError
+from botocore.config import Config
 from datetime import datetime
+
+my_config = Config(
+    region_name = 'ca-central-1',
+    signature_version = 'v4',
+    retries = {
+        'max_attempts': 10,
+        'mode': 'standard'
+    }
+)
+
 
 def send_email(destination, body_content, ses_user, ses_key):
     SENDER = "goodnewseveryone@ses.gregular.com"
@@ -10,7 +21,7 @@ def send_email(destination, body_content, ses_user, ses_key):
     BODY_HTML = f"<html><body>{body_content}</body></html>"
     CHARSET = "UTF-8"
     
-    client = boto3.client('ses', region_name=AWS_REGION, aws_access_key_id=ses_user, aws_secret_access_key=ses_key)
+    client = boto3.client('ses', config=my_config, region_name=AWS_REGION, aws_access_key_id=ses_user, aws_secret_access_key=ses_key)
 
     try:
         response = client.send_email(
