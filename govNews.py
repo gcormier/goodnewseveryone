@@ -20,7 +20,7 @@ data = response.json()
 # Loop through each item in the JSON and print details
 entries = data.get("feed", {}).get("entry", [])
 for entry in entries:
-    response: ChatResponse = chat(model='llama3.2', messages=[
+    response: ChatResponse = chat(model='llama3.2', options={"temperature" : 0.1}, messages=[
     {
     'role': 'system',
     'content': 'Your only purpose is to view news headlines and summaries. \
